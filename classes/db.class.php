@@ -1,8 +1,6 @@
 <?php
 
-require_once ('../Ecommerce\ website/DB/MysqliDb.php');
-
-class Dbh
+class Db
 {
     private $host = "localhost";
     private $user = "root";
@@ -11,11 +9,13 @@ class Dbh
 
     protected function connect()
     {
-        $database = new MysqliDb ("localhost", "root", "", "commerce_website");
-        if(!$database->connect()){
+        $database = new MysqliDb ($this->host, $this->user, $this->pwd, $this->dbName);
+        try
+        {
+            $database->connect();
             return $database;
-        } else {
-            echo "Error: Database doesn't exist";
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
     }
 }
