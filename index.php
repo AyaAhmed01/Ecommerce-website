@@ -17,56 +17,41 @@ include('includes/header.inc.php');
         <button class="btn btn-sm btn-outline-secondary" type="button">
             <a class="nav-link" href="add-product.php">ADD</a>
         </button>
-        <button class="btn btn-sm btn-outline-secondary" type="submit" form="delete-form">MASS DELETE</button>
+        <button class="btn btn-sm btn-outline-secondary" type="submit" form="delete_form">MASS DELETE</button>
     </form>
 </nav>
 
 <div class="container">
-    <form action="classes/delete-products.class.php" method="POST" id="delete-form">
+    <form action="classes/delete-products.class.php" method="POST" id="delete_form">
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Now each card is (col -> card -> in card body put info and the form checkbox -->
-            <!-- foreach product -->
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input delete-checkbox" name="deletedIds[]"
-                                   value="3r4df">
+            <?php
+            $products = array_merge(Book::getProducts(), Dvd::getProducts(), Furniture::getProducts());
+            usort($products, function ($a, $b) {
+                return strcmp($a->getSku(), $b->getSku());
+            });
+            foreach ($products as $product){
+            ?>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input delete-checkbox" name="deletedIds[]"
+                                       value="<?php echo $product->getSku(); ?>">
+                            </div>
+                            <ul class=\"card-text\" style=\"align-content: center; padding: 20px;\">
+                                <li><?php echo $product->getSku(); ?></li>
+                                <li><?php echo $product->getName(); ?></li>
+                                <li><?php echo $product->getPrice()." $"; ?></li>
+                                <li><?php echo $product->showSpecialAttr(); ?></li>
+                            </ul>
                         </div>
-                        <p class="card-text" style="align-content: center; padding: 20px;">This is a longer card with
-                            supporting text below as a natural lead-in to additional content. This content is a little
-                            bit longer.</p>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input delete-checkbox" name="deletedIds[]"
-                                   value="2">
-                        </div>
-                        <p class="card-text" style="align-content: center; padding: 20px;">This is a longer card with
-                            supporting text below as a natural lead-in to additional content. This content is a little
-                            bit longer.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input delete-checkbox" name="deletedIds[]"
-                                   value="3">
-                        </div>
-                        <p class="card-text" style="align-content: center; padding: 20px;">This is a longer card with
-                            supporting text below as a natural lead-in to additional content. This content is a little
-                            bit longer.</p>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </form>
 </div>
 
-<?php include('includes/footer.inc.php'); ?>
+<?php include('includes/footer.inc.php'); ?>    <!-- has the footer only -->
+    </body>
+</html>
