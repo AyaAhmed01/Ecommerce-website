@@ -1,22 +1,25 @@
-<div id="Book">                     <!-- could be another thing rather than div -->
+<div id="Book">
     <label for="weight">Weight (KG) </label>
-    <input type="number" required class="form-control" name="weight" id="weight">
+    <input type="number" required class="form-control" name="weight" id="weight" pattern="\d+">
     <small>*Please provide book weight in KG*</small>
 </div>
 
-<div id="Furniture">                     <!-- could be another thing rather than div -->
-    <label for="height">Height (CM) </label>
-    <input type="number" required class="form-control" name="height" id="height">
+<div id="Furniture">
+    <label for="length">Length (CM) </label>
+    <input type="number" required class="form-control" name="length" id="length" pattern="\d+">
 
     <label for="width">Width (CM) </label>
-    <input type="number" required class="form-control" name="width" id="width">
+    <input type="number" required class="form-control" name="width" id="width" pattern="\d+">
 
-    <label for="length">Length (CM) </label>
-    <input type="number" required class="form-control" name="length" id="length">
+    <label for="height">Height (CM) </label>
+    <input type="number" required class="form-control" name="height" id="height" pattern="\d+">
+
+    <small>*Please provide dimensions in LxWxH format*</small>
 </div>
 
 
-<div id="DVD">                     <!-- could be another thing rather than div -->
+<div id="DVD">
     <label for="size">Size (MB) </label>
-    <input type="number" required class="form-control" name="size" id="size">
+    <input type="number" required class="form-control" name="size" id="size" pattern="\d+">
+    <small>*Please provide DVD size in MB*</small>
 </div>
