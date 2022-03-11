@@ -30,7 +30,7 @@ include 'includes/autoload.inc.php';
         </div>
         <div class="form-group">
             <label for="price">Price</label>
-            <input type="number" required class="form-control number" name="price" id="price" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);">
+            <input type="number" required class="form-control" name="price" id="price" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);">
         </div>
 
         <div class="form-group">
@@ -71,27 +71,26 @@ include 'includes/autoload.inc.php';
     });
 
     // Pattern validation
-    let nameInput = document.getElementById("name");
-    let skuInput = document.getElementById("sku");
+
     let hiddenInput = document.getElementById("hiddenSubmit");
-    let numInput = document.getElementsByClassName("number");
     let form = document.getElementById("product_form");
 
-    document.addEventListener("focusout",function(event){
-        if(event.target instanceof HTMLInputElement){
-            if(!form.checkValidity()){
+    document.addEventListener("focusout",function(event)
+    {
+        if(event.target instanceof HTMLInputElement) {
+            if(!form.checkValidity()) {
                 hiddenInput.click();
             }
         }
     });
 
-    function InvalidMsg(inputBox) {
-        if(inputBox.validity.patternMismatch){
+    function InvalidMsg(inputBox)
+    {
+        if(inputBox.validity.patternMismatch) {
             inputBox.setCustomValidity('Please, provide the data of indicated type');
         } else if(inputBox.validity.valueMissing) {
             inputBox.setCustomValidity('Please, submit required data');
-        }
-        else {
+        } else {
             inputBox.setCustomValidity('');
         }
         return true;
