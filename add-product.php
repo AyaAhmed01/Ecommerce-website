@@ -24,19 +24,20 @@ include 'includes/autoload.inc.php';
     <form class="was-validated" id="product_form" method="POST" action="classes/insert-product.class.php">
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" required name="name" class="form-control" id="name" pattern="^[a-z]+[a-z ]*i">  // start with letter could end with letter or space
-            <div class="invalid-feedback">Please, submit required data</div>
+            <input type="text" required name="name" class="form-control" id="name" pattern="[A-Za-z]+[A-Za-z ]*"
+                   oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" title="">  <!-- start with letter could end with letter or space -->
+            <div class="invalid-feedback">Product name should start with letter and only contain letters and spaces</div>
         </div>
         <div class="form-group">
             <label for="price">Price</label>
-            <input type="number" required class="form-control" name="price" id="price" pattern="\d+">
-            <div class="invalid-feedback">Please, submit required data</div>
+            <input type="number" required class="form-control number" name="price" id="price" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);">
         </div>
 
         <div class="form-group">
             <label for="sku">SKU</label>
-            <input type="text" required class="form-control" name="SKU" id="sku" pattern="[\w]">
-            <div class="invalid-feedback">Please, submit required data</div>
+            <input type="text" required class="form-control" name="SKU" id="sku" pattern="[\w]{8,12}"
+                   oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" title="">
+            <div class="invalid-feedback">SKU should only contain from 8 to 12 letter and digit  e.g. 8fe7HG87</div>
         </div>
 
         <label for="productType">Product type</label>
@@ -47,9 +48,10 @@ include 'includes/autoload.inc.php';
         </select>
         <div id="specialData" class="form-group">
             <label for="weight">Weight (KG) </label>
-            <input type="number" required class="form-control" name="weight" id="weight" pattern="\d+">
+            <input type="number" required class="form-control" name="weight" id="weight" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);">
             <small>*Please provide book weight in KG*</small>
         </div>
+        <input type="submit" class="hide" id="hiddenSubmit" style="visibility:hidden;">
     </form>
 </div>
 
@@ -59,11 +61,68 @@ include 'includes/autoload.inc.php';
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
+
+    // Load special attributes input fields
     jQuery(document).ready(function () {
         jQuery("#productType").change(function () {
             let selected_val = $("#productType option:selected").val();
             jQuery("#specialData").load("includes/formData.inc.html #" + selected_val);
         });
     });
+
+    // Pattern validation
+    let nameInput = document.getElementById("name");
+    let skuInput = document.getElementById("sku");
+    let hiddenInput = document.getElementById("hiddenSubmit");
+    let numInput = document.getElementsByClassName("number");
+    let form = document.getElementById("product_form");
+
+    document.addEventListener("focusout",function(event){
+        if(event.target instanceof HTMLInputElement){
+            if(!form.checkValidity()){
+                hiddenInput.click();
+            }
+        }
+    });
+
+    function InvalidMsg(inputBox) {
+        if(inputBox.validity.patternMismatch){
+            inputBox.setCustomValidity('Please, provide the data of indicated type');
+        } else if(inputBox.validity.valueMissing) {
+            inputBox.setCustomValidity('Please, submit required data');
+        }
+        else {
+            inputBox.setCustomValidity('');
+        }
+        return true;
+    }
+
+    // nameInput.addEventListener("focusout", function (){             // focusing out == submitting: oninvalid, required or validity
+    //     hiddenInput.click();
+    // });
+
+    // nameInput.oninvalid = function(event) {
+    //     if(nameInput.value === ""){
+    //         event.target.setCustomValidity('Please, submit required data');
+    //     } else {
+    //         event.target.setCustomValidity('Product name should start with letter and only contain letters and spaces');
+    //     }
+    // }
+    //
+    // document.addEventListener("input",function(event){
+    //     if(event.target instanceof HTMLInputElement)
+    //     {
+    //         event.target.setCustomValidity("");
+    //     }
+    // });
+
+
+    // skuInput.addEventListener("focusout", function (){
+    //     hiddenInput.click();
+    // });
+
+    // skuInput.oninvalid = function(event) {
+    //     event.target.setCustomValidity('SKU should only contain from 8 to 12 letter and digit  e.g. 8fe7HG87');
+    // }
 </script>
 </html>
