@@ -1,23 +1,16 @@
 <?php
-include 'product.class.php';
-// COMPLETE: insert using abstract class for other columns
+include '../includes/autoload.inc.php';
 
 if(isset($_POST['submit']))
 {
-    $name = $_POST['name'];
-    $sku = $_POST['SKU'];
-    $price = $_POST['price'];
+    $typeClass = $_POST['product-type'];
+    $product = new $typeClass();
 
-    $product = new Product();
-    $dataInsert = Array ( "name" => $name ,
-        "SKU" => $sku ,
-        "price" => $price
-    );
-
-    if($product->insertProduct($dataInsert))
+    if($product->insertProduct($_POST))
     {
-        header("Location: ".BURL);
+        header("Location: http://localhost:2000/");
         die();
     }
+}else {
+    echo "Error: Form isn't submitted";
 }
-
