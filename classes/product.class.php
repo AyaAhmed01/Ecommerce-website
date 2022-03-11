@@ -1,28 +1,49 @@
 <?php
 
-class Product extends Db
+abstract class Product extends Db
 {
-    private $table = "products";
-    private $db;
+    protected static $table = "products";
+    protected static $db;
+    protected $name, $price, $sku;
+
+    abstract public function insertProduct($data);
+    abstract public function showSpecialAttr();
+    abstract public static function getProducts();
+
+    private static function getProduct($sku)
+    {
+        return self::$db->where('SKU', $sku);
+    }
+
+    protected static function start()
+    {
+        self::$db = parent::connect();
+    }
+
+    public static function deleteProduct($sku)
+    {
+        self::start();
+        $record = self::getProduct($sku);
+        return $record->delete(self::$table);
+    }
 
     public function __construct()
     {
-        $this->db = $this->connect();
+        self::start();
     }
 
-    public function getAllProducts()
+    public function getSku()
     {
-        return $this->db->get($this->table);
+        return "$this->sku";
     }
 
-    public function deleteProduct($sku)
+    public function getName()
     {
-        $record = $this->db->where('SKU', $sku);
-        return $record->delete($this->table);
+        return $this->name;
     }
 
-    public function insertProduct($data)
+    public function getPrice()
     {
-        return $this->db->insert($this->table, $data);
+        return $this->price;
     }
 }
