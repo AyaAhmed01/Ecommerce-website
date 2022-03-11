@@ -2,14 +2,14 @@
 
 class Db
 {
-    private $host = "localhost";
-    private $user = "root";
-    private $pwd = "";
-    private $dbName = "commerce_website";
+    private static $host = "localhost";
+    private static $user = "root";
+    private static $pwd = "";
+    private static $dbName = "commerce_website";
 
-    protected function connect()
+    protected static function connect()
     {
-        $database = new MysqliDb ($this->host, $this->user, $this->pwd, $this->dbName);
+        $database = new MysqliDb (self::$host, self::$user, self::$pwd, self::$dbName);
         try
         {
             $database->connect();
