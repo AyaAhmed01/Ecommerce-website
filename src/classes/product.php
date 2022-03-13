@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Classes;
+
 abstract class Product extends Db
 {
     protected static $table = "products";

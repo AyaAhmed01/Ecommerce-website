@@ -1,6 +1,9 @@
 <?php
-include 'includes/autoload.inc.php';
-include('includes/header.inc.php');
+include('src/Includes/header.php');
+require_once realpath("vendor/autoload.php");
+use App\Classes\Book;
+use App\Classes\Dvd;
+use App\Classes\Furniture;
 ?>
 
 <!--Here I show the list of products-->
@@ -8,7 +11,7 @@ include('includes/header.inc.php');
 <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #cf0b0c;">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="assets/logo.png" width=40 alt="">
+            <img src="src/Assets/logo.png" width=40 alt="">
             <span style="color: white; font-size: medium">Product List</span>
         </a>
     </div>
@@ -22,7 +25,7 @@ include('includes/header.inc.php');
 </nav>
 
 <div class="container">
-    <form action="classes/delete-products.class.php" method="POST" id="delete_form">
+    <form action="delete-products.php" method="POST" id="delete_form">
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <?php
             $products = array_merge(Book::getProducts(), Dvd::getProducts(), Furniture::getProducts());
@@ -52,6 +55,6 @@ include('includes/header.inc.php');
     </form>
 </div>
 
-<?php include('includes/footer.inc.php'); ?>    <!-- has the footer only -->
+<?php include('src/Includes/footer.php'); ?>    <!-- has the footer only -->
     </body>
 </html>

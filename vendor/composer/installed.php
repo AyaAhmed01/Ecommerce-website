@@ -5,18 +5,18 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '8e17d3df2bc4b61b9208c211e39f5e4e5e0676b9',
-        'name' => '__root__',
+        'reference' => '2132e96a40b4776c6be7f446e1c76b7a782475db',
+        'name' => 'aya_web/ecommerce_website',
         'dev' => true,
     ),
     'versions' => array(
-        '__root__' => array(
+        'aya_web/ecommerce_website' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '8e17d3df2bc4b61b9208c211e39f5e4e5e0676b9',
+            'reference' => '2132e96a40b4776c6be7f446e1c76b7a782475db',
             'dev_requirement' => false,
         ),
         'squizlabs/php_codesniffer' => array(
@@ -27,6 +27,17 @@
             'aliases' => array(),
             'reference' => 'b301c98f19414d836fdaa678648745fcca5aeb4f',
             'dev_requirement' => true,
+        ),
+        'thingengineer/mysqli-database-class' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../thingengineer/mysqli-database-class',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'reference' => '16564ba0717fad64617a1ce4a8d3f9b90e68c7c2',
+            'dev_requirement' => false,
         ),
     ),
 );

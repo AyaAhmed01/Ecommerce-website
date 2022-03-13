@@ -6,6 +6,25 @@ namespace Composer\Autoload;
 
 class ComposerStaticInita25804c1526f4dcf0b318960cda2276c
 {
+    public static $files = array (
+        '71ecd0286a4e74fd8732297fb587023c' => __DIR__ . '/..' . '/thingengineer/mysqli-database-class/MysqliDb.php',
+        'd383f1ec7b1e54a09cb53eb6fcf751e0' => __DIR__ . '/..' . '/thingengineer/mysqli-database-class/dbObject.php',
+    );
+
+    public static $prefixLengthsPsr4 = array (
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Generic_Sniffs_Classes_DuplicateClassNameSniff' => __DIR__ . '/..' . '/squizlabs/php_codesniffer/CodeSniffer/Standards/Generic/Sniffs/Classes/DuplicateClassNameSniff.php',
@@ -256,6 +275,8 @@ class ComposerStaticInita25804c1526f4dcf0b318960cda2276c
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInita25804c1526f4dcf0b318960cda2276c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita25804c1526f4dcf0b318960cda2276c::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInita25804c1526f4dcf0b318960cda2276c::$classMap;
 
         }, null, ClassLoader::class);

@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Classes;
+
 class Book extends Product
 {
     protected $weight;

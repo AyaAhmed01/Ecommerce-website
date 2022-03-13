@@ -1,10 +1,11 @@
 <?php
-include '../includes/autoload.inc.php';
+
+require_once realpath("vendor/autoload.php");
 
 if(isset($_POST['deletedIds'])){
     $ids = $_POST['deletedIds'];
     foreach ($ids as $id) {
-        if(!(Product::deleteProduct($id))){
+        if(!(\App\Classes\Product::deleteProduct($id))){
             echo "Error";
         }
     }

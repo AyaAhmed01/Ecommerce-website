@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Classes;
+
 class Furniture extends Product
 {
     protected $length, $width, $height;

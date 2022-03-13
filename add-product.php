@@ -1,12 +1,12 @@
 <?php
-include('includes/header.inc.php');
-include 'includes/autoload.inc.php';
+include('src/Includes/header.php');
+require_once realpath("vendor/autoload.php");
 ?>
 
 <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #cf0b0c;">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="assets/logo.png" width=40 alt="">
+            <img src="src/Assets/logo.png" width=40 alt="">
             <span style="color: white; font-size: medium">Product Add</span>
         </a>
     </div>
@@ -21,7 +21,7 @@ include 'includes/autoload.inc.php';
 
 
 <div class="container">
-    <form class="was-validated" id="product_form" method="POST" action="classes/insert-product.class.php">
+    <form class="was-validated" id="product_form" method="POST" action="insert-product.php">
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" required name="name" class="form-control" id="name" pattern="[A-Za-z]+[A-Za-z ]*"
@@ -55,7 +55,7 @@ include 'includes/autoload.inc.php';
     </form>
 </div>
 
-<?php include('includes/footer.inc.php'); ?>
+<?php include('src/Includes/footer.php'); ?>
 
 </body>
 
@@ -66,7 +66,7 @@ include 'includes/autoload.inc.php';
     jQuery(document).ready(function () {
         jQuery("#productType").change(function () {
             let selected_val = $("#productType option:selected").val();
-            jQuery("#specialData").load("includes/formData.inc.html #" + selected_val);
+            jQuery("#specialData").load("src/Includes/formData.html #" + selected_val);
         });
     });
 
@@ -90,7 +90,7 @@ include 'includes/autoload.inc.php';
             inputBox.setCustomValidity('Please, provide the data of indicated type');
         } else if(inputBox.validity.valueMissing) {
             inputBox.setCustomValidity('Please, submit required data');
-        } else {
+        } else if(inputBox.validity.){
             inputBox.setCustomValidity('');
         }
         return true;

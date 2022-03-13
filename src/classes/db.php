@@ -1,4 +1,7 @@
 <?php
+namespace App\Classes;
+
+use MysqliDb;
 
 class Db
 {

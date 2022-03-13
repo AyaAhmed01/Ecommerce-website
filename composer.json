@@ -1,6 +1,15 @@
 {
+    "name": "aya_web/ecommerce_website",
+    "description": "This is an ecommerce_website for Scandiweb junior assignment",
     "require-dev": {
         "squizlabs/php_codesniffer": "^2.2"
     },
-
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "thingengineer/mysqli-database-class": "dev-master"
+    }
 }
