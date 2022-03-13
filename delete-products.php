@@ -2,7 +2,7 @@
 
 require_once realpath("vendor/autoload.php");
 
-const BURL = "https://ecommerce-website-php.herokuapp.com/index.php";    // "http://localhost:2000/"
+//const BURL = "https://ecommerce-website-php.herokuapp.com/index.php";    // "http://localhost:2000/"
 
 if(isset($_POST['deletedIds'])){
     $ids = $_POST['deletedIds'];
