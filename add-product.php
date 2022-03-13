@@ -59,7 +59,9 @@ require_once realpath("vendor/autoload.php");
 
 </body>
 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
+
     // Load special attributes input fields
     jQuery(document).ready(function () {
         jQuery("#productType").change(function () {
@@ -88,7 +90,7 @@ require_once realpath("vendor/autoload.php");
             inputBox.setCustomValidity('Please, provide the data of indicated type');
         } else if(inputBox.validity.valueMissing) {
             inputBox.setCustomValidity('Please, submit required data');
-        } else if(inputBox.validity.){
+        } else {
             inputBox.setCustomValidity('');
         }
         return true;
