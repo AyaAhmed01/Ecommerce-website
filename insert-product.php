@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';
+include 'vendor/autoload.php';
 
 if(isset($_POST['submit']))
 {
@@ -10,7 +10,7 @@ if(isset($_POST['submit']))
 
     if($product->insertProduct($_POST))                       // handle exception when SKU is not unique.
     {
-        header("Location: http://localhost:2000/");
+        header("Location: ".BURL);
         die();
     }
 }else {

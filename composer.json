@@ -10,6 +10,7 @@
         }
     },
     "require": {
-        "thingengineer/mysqli-database-class": "dev-master"
+        "thingengineer/mysqli-database-class": "dev-master",
+        "twbs/bootstrap": "4.0.0"
     }
 }
