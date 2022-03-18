@@ -1,0 +1,68 @@
+.navbar {
+    background-color: #cf0b0c;
+}
+
+.btn:hover {
+    background: #000;
+    color: white;
+}
+
+.btn {
+    color: white;
+    border: solid 1px black;
+    border-radius: 5px;
+    margin: 0 20px;
+    font-size: 13px;
+    padding: 0;
+}
+
+.btn a{
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+.btn a, .form-btn {
+    padding: 10px 20px;
+}
+
+.navbar-brand span {
+    color: white;
+    font-size: medium;
+}
+
+.container {
+    min-height: 380px;
+    margin-top: 30px;
+}
+
+.card {
+    margin: 15px 0;
+}
+
+.card-text li{
+    display: flex;
+    justify-content: center;
+}
+
+.card-text {
+    padding: 20px;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.page-footer {
+    justify-content: center;
+    background: #fff;
+    color: #aaa;
+    font-size: 14px;
+    border-top: 1px solid #ccc;
+    margin: 0 55px;
+}
+
+.footer-copy {
+    display: block;
+    padding: 20px;
+}
