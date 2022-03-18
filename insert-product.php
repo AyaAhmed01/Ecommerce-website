@@ -1,5 +1,4 @@
 <?php
-
 include 'vendor/autoload.php';
 
 if(isset($_POST['submit']))
