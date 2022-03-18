@@ -11,5 +11,5 @@ if(isset($_POST['deletedIds'])){
     }
 }
 
-header("Location: ".BURL);
+header("Location: https://www.scandiweb.xyz/");
 die();

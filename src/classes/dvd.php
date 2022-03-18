@@ -2,7 +2,7 @@
 
 namespace App\Classes;
 
-class Dvd extends Product
+class DVD extends Product
 {
     protected $size;
 

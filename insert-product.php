@@ -1,17 +1,17 @@
 <?php
 include 'vendor/autoload.php';
 
-if(isset($_POST['submit']))
-{
+if (isset($_POST['submit'])) {
     $typeClass = $_POST['product-type'];
-    $className = "\App\Classes\\".$typeClass;
+    $className = "\App\Classes\\" . $typeClass;
     $product = new $className();
-
-    if($product->insertProduct($_POST))                       // handle exception when SKU is not unique.
-    {
-        header("Location: ".BURL);
+    try {
+        $product->insertProduct($_POST);
+        header("Location: https://www.scandiweb.xyz/");
         die();
+    } catch (Exception $e) {
+        echo 'Caught exception: ', $e->getMessage(), "\n";
     }
-}else {
+} else {
     echo "Error: Form isn't submitted";
 }

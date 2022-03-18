@@ -6,9 +6,9 @@ use MysqliDb;
 class Db
 {
     private static $host = "localhost";
-    private static $user = "root";
-    private static $pwd = "";
-    private static $dbName = "commerce_website";
+    private static $user = "scanlsoo_ayaAhmed";
+    private static $pwd = "uejG2hjn@4SWGSC";
+    private static $dbName = "scanlsoo_ecommerce_website";
 
     protected static function connect()
     {
@@ -17,7 +17,7 @@ class Db
         {
             $database->connect();
             return $database;
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
     }
